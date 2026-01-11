@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://estelle-formation.fr/sitemap.xml
