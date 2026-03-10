@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+    <title>Formation IA pour débutants</title>
+    <meta content="Formation IA facile à domicile pour débutants et seniors à Colmar, Sélestat et environs. Apprenez ChatGPT et l'IA créative sans jargon. Séances individuelles ou en groupe." name="description"/>
+    <meta content="formation IA, intelligence artificielle, débutant, senior, domicile, Colmar, Sélestat, ChatGPT, IA créative, cours informatique" name="keywords"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://estelle-formation.fr/"/>
+    <meta property="og:title" content="Formation IA à domicile (Débutants & Seniors) - Colmar & Sélestat | Estelle IA"/>
+    <meta property="og:description" content="Formation IA facile à domicile pour débutants et seniors à Colmar, Sélestat et environs. Apprenez ChatGPT et l'IA créative sans jargon."/>
+    <meta property="og:image" content="https://placehold.co/1200x630/2a9d8f/ffffff?text=Formation+IA"/>
+    <meta property="og:locale" content="fr_FR"/>
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content="https://estelle-formation.fr/"/>
+    <meta property="twitter:title" content="Formation IA à domicile (Débutants & Seniors) - Colmar & Sélestat | Estelle IA"/>
+    <meta property="twitter:description" content="Formation IA facile à domicile pour débutants et seniors à Colmar, Sélestat et environs. Apprenez ChatGPT et l'IA créative sans jargon."/>
+    <meta property="twitter:image" content="https://placehold.co/1200x630/2a9d8f/ffffff?text=Formation+IA"/>
+    <link rel="icon" href="/favicon.ico" sizes="any"/>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Fraunces:opsz,wght@9..144,900&display=swap" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+
+    <style>
+        :root{
+          /* PALETTE DARK MODE */
+          --bg:#0B1120;
+          --paper:rgba(30, 41, 59, 0.7);
+          --paper-solid:#1e293b;
+          --ink:#f1f5f9;
+          --muted:#94a3b8;
+          
+          --primary:#2a9d8f;
+          --accent:#f4a261;
+          --accent-2:rgba(42, 157, 143, 0.15);
+          
+          --border:rgba(255, 255, 255, 0.1);
+          --radius:18px; 
+          --ease:cubic-bezier(.22,.61,.36,1);
+        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{
+          background:var(--bg);color:var(--ink);
+          font-family:Nunito,system-ui,sans-serif;
+          overflow-x:hidden;position:relative;
+          user-select:none;-webkit-user-select:none;-ms-user-select:none;
+          font-size: 18px;
+          line-height: 1.6;
+        }
+        a{text-decoration:none;color:inherit; transition: color 0.2s ease;}
+        a:hover { color: var(--primary); }
+
+        h1, h2, h3 {
+          font-family:Fraunces,serif;
+          font-weight:900;
+          color: var(--ink);
+          margin-bottom: 0.75em;
+          line-height: 1.2;
+        }
+        h1{font-size:clamp(32px, 5.5vw, 60px);}
+        h2{font-size:clamp(28px, 4.8vw, 42px);}
+        h3{font-size:clamp(22px, 3.5vw, 28px); font-weight: 800;}
+        p{font-size:clamp(17px, 2vw, 19px); line-height:1.65; margin-bottom: 1em; color: var(--muted);}
+        p strong { font-weight: 700; color: var(--ink); }
+
+        /* Header */
+        .top{
+          position:sticky;top:0;z-index:50;
+          background:rgba(11, 17, 32, 0.85);
+          backdrop-filter:blur(12px);
+          border-bottom:1px solid var(--border);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .top-inner{
+          display:flex;align-items:center;justify-content:space-between;
+          padding:14px clamp(14px,4vw,40px);
+          gap:16px;
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+        .brand{display:flex;align-items:center;gap:12px; height: 50px;}
+        .brand img{height:100%; max-height: 50px; width: auto; display:block; object-fit: contain;}
+
+        /* Navigation */
+        nav{display:none; align-items:center; gap:12px; flex-wrap:wrap;}
+        nav a{
+          padding:10px 16px;
+          border-radius:999px;
+          background:rgba(255, 255, 255, 0.05);
+          font-weight:700;
+          font-size:15px;
+          color: var(--muted);
+          transition: background .2s ease, color .2s ease, transform 0.2s ease;
+          border: 1px solid transparent;
+        }
+        nav a:hover {
+            background: rgba(42,157,143,.15);
+            color: var(--primary);
+            border-color: rgba(42,157,143,.3);
+            transform: translateY(-1px);
+        }
+
+        /* Bouton */
+        .btn{
+          display:inline-block;padding:12px 20px; border-radius:999px;
+          background:var(--primary);color:#fff;font-weight:700;font-size:15px;
+          transition: transform .2s ease, box-shadow .2s ease, background-color 0.2s ease;
+          position:relative;z-index:2;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .btn:hover{
+            transform:translateY(-2px);
+            box-shadow: 0 4px 15px rgba(42,157,143,0.4);
+            background-color: #248a7f;
+            color: #fff;
+        }
+        .btn.alt{background:var(--accent)}
+        .btn.alt:hover{
+             box-shadow: 0 4px 15px rgba(244,162,97,0.4);
+             background-color: #e39251;
+        }
+
+        /* Hero */
+        .hero{min-height:auto; display:grid; place-items:center; text-align:center; padding: 48px 20px 64px; position:relative; z-index:1; overflow:hidden;}
+        .hero p{max-width:980px; margin: 12px auto 0; color:var(--muted)}
+        .hero-box{
+          background:var(--paper);
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          padding: clamp(20px, 5vw, 40px);
+          box-shadow:0 8px 32px rgba(0,0,0,.3);
+          display:inline-block;position:relative;z-index:2;
+          max-width: 900px;
+          width: 95%;
+          backdrop-filter: blur(8px);
+        }
+        
+        .bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.05);animation:float 12s infinite ease-in-out;z-index:1;filter:blur(1px)}
+        @keyframes float{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-30px) scale(1.05)}100%{transform:translateY(0) scale(1)}}
+
+        /* Sections */
+        section{padding:56px 20px; position:relative; z-index:1;}
+        section h2 { margin-bottom: 2.5rem; text-align: center; }
+
+        /* Grid et Cards */
+        .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); max-width: 1100px; margin: 0 auto;}
+        .card{
+            background:var(--paper);
+            border:1px solid var(--border);
+            border-radius:var(--radius);padding:24px;
+            box-shadow:0 4px 20px rgba(0,0,0,.2);
+            display: flex; flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.4);
+            border-color: rgba(42, 157, 143, 0.3);
+        }
+        .card h3 { margin-bottom: 1rem; }
+        .card p:last-of-type { margin-bottom: 0; }
+        .price{font-size:22px;font-weight:800; margin-bottom: 0.5rem; color: var(--ink);}
+        .note{color:var(--muted);font-size:16px; margin-top: auto; padding-top: 1rem;}
+
+        /* Footer */
+        footer{padding:40px 20px;text-align:center;color:var(--muted);font-size:15px;background:rgba(15, 23, 42, 0.6);backdrop-filter:blur(8px);border-top:1px solid var(--border);position:relative;z-index:1; margin-top: 40px;}
+        footer p { margin-bottom: 0.5em; }
+
+        /* Canvas */
+        #bgfx,#botfx{position:fixed;inset:0;z-index:0;}
+        #bgfx{cursor:default; pointer-events:none;}
+        
+        /* MODIFICATION MOBILE: 
+           'touch-action: auto' permet de scroller la page en touchant le fond.
+           Le JS s'occupera de passer à 'none' uniquement quand on drag un robot.
+        */
+        #botfx{
+            cursor:grab; 
+            pointer-events:auto !important; 
+            touch-action: auto; 
+        }
+        #botfx.grabbing{cursor:grabbing;}
+        #botfx_ui{position:absolute;inset:0;pointer-events:none}
+
+        .map-display { 
+            width: 100%; 
+            border-radius: var(--radius); 
+            border: 1px solid var(--border); 
+            overflow: hidden; 
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px){
+            nav { display: flex !important; }
+            .menu-toggle { display: none !important; }
+            .top .btn.alt { display: inline-block !important; }
+            .menu-popover { display: none !important; }
+            .hero { padding: 64px 20px 80px; }
+            section { padding: 72px 20px; }
+        }
+
+        /* Hamburger Mobile / Popover */
+        .menu-toggle{
+            position:relative; display:inline-flex; align-items:center; justify-content:center;
+            width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.05);
+            border:1px solid var(--border); cursor:pointer;
+            transition:transform .2s var(--ease), background .2s var(--ease);
+            z-index: 130;
+        }
+        .menu-toggle:hover{ transform:translateY(-1px); background:rgba(255,255,255,.1); }
+        .menu-toggle .bar{
+            position:absolute; left:50%; width:22px; height:2.2px; background:var(--ink);
+            border-radius:999px; transition:transform .25s var(--ease), opacity .2s var(--ease), width .2s var(--ease);
+            transform-origin: center; transform: translate(-50%, 0);
+        }
+        .menu-toggle .bar:nth-child(1){ top:15px; }
+        .menu-toggle .bar:nth-child(2){ top:21px; }
+        .menu-toggle .bar:nth-child(3){ top:27px; }
+        .menu-toggle.active .bar:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+        .menu-toggle.active .bar:nth-child(2){ opacity:0; width:0; }
+        .menu-toggle.active .bar:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+        .top-inner{ position:relative; }
+        .menu-popover{
+            position:absolute; right:12px; top: calc(100% + 10px); z-index:120;
+            background: var(--paper-solid); border:1px solid var(--border); border-radius:16px;
+            box-shadow:0 10px 40px rgba(0,0,0,.5); padding:10px; width:240px;
+            opacity: 0; visibility: hidden; transform: translateY(-10px);
+            transition: opacity .2s ease, visibility .2s ease, transform .2s ease;
+        }
+        .menu-popover.open{ opacity: 1; visibility: visible; transform: translateY(0); }
+        .menu-popover a{
+            display:block; padding:12px 14px; border-radius:12px; background:rgba(255,255,255,.05);
+            font-weight:700; margin:6px 0; color: var(--muted); text-align: left; font-size: 15px;
+            transition: background .2s, color .2s;
+        }
+         .menu-popover a:hover { background:rgba(42,157,143,.15); color: var(--primary); }
+        .menu-popover .call{ background:var(--accent); color:#fff; text-align:center; font-weight: 800; }
+        .menu-popover .call:hover { background: #e39251; }
+
+        /* Formulaire */
+        form label { display: block; margin-bottom: 5px; font-weight: 700; font-size: 15px; color: var(--muted); }
+        form input[type="text"], form input[type="tel"] {
+            width: 100%; padding: 12px; margin-bottom: 12px; 
+            background: rgba(0,0,0,0.2); 
+            border: 1px solid var(--border);
+            color: var(--ink);
+            border-radius: 8px; font-size: 16px; transition: border-color .2s, box-shadow .2s;
+        }
+        form input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(42,157,143,.2); background: rgba(0,0,0,0.3); }
+        form button { width: 100%; }
+        #callback-status { margin-top: 10px; font-size: 14px; }
+
+        /* FAQ */
+        details { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom: 10px; transition: background-color 0.2s ease;}
+        details:hover { background:rgba(255,255,255,0.06); }
+        summary { font-weight: 700; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.5em; line-height: 1; transition: transform .2s var(--ease); margin-left: 10px; color: var(--primary); }
+        details[open] summary::after { transform: rotate(45deg); }
+        details p, details ul { font-size: 16px; color: var(--muted); padding-top: 12px; margin-top: 10px; border-top: 1px solid var(--border); animation: fadeInDetails 0.3s ease-out forwards; opacity: 0;}
+        details ul { padding-top: 0; margin-top: 0.5rem; border-top: none; animation: none; opacity: 1; }
+        
+        @keyframes fadeInDetails { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Performance */
+        .hero-box, .bubble, #bgfx, #botfx, #botfx_ui { will-change: transform, opacity; }
+
+        /* Bannière Dev */
+        .dev-banner { position: relative; z-index: 9999; width:100%;
+          background:linear-gradient(90deg,#f4a261,#f7c04a); color:white; font-weight:800;
+          text-align:center; padding:10px 0; letter-spacing:0.5px; font-size:16px;
+          box-shadow:0 2px 8px rgba(0,0,0,.1);
+        }
+
+        /* MODIFICATION ANIMATIONS : 
+           Classe mise à jour pour des animations plus "pop" 
+        */
+        .gsap-reveal {
+            opacity: 0;
+            will-change: transform, opacity, filter;
+            /* État initial défini dans le CSS pour éviter le FOUC, 
+               mais GSAP prendra le relais */
+        }
+
+        .card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 1rem;
+            font-size: 17px;
+            color: var(--muted);
+            text-align: left;
+        }
+        .card ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .card ul li strong {
+            color: var(--ink);
+        }
+
+        /* COOKIES BANNER */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--paper-solid);
+            border-top: 1px solid var(--border);
+            padding: 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.3);
+            z-index: 9998;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
+            font-size: 15px;
+            color: var(--muted);
+        }
+        #cookie-banner.show { transform: translateY(0); }
+        #cookie-banner p { margin-bottom: 0; flex-grow: 1; font-size: 15px; line-height: 1.5; color: var(--ink); }
+        #cookie-banner a { color: var(--primary); text-decoration: underline; }
+        #cookie-banner-buttons { display: flex; gap: 10px; flex-shrink: 0; }
+        #cookie-banner-buttons button {
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            transition: background .2s, transform .2s;
+        }
+        #cookie-accept { background: var(--primary); color: #fff; }
+        #cookie-accept:hover { background: #248a7f; transform: translateY(-1px); }
+        #cookie-refuse { background: rgba(255,255,255,0.1); color: var(--muted); }
+        #cookie-refuse:hover { background: rgba(255,255,255,0.15); color: var(--ink); }
+        @media (max-width: 768px) {
+            #cookie-banner { flex-direction: column; align-items: flex-start; text-align: left; }
+            #cookie-banner-buttons { width: 100%; justify-content: flex-end; }
+        }
+    </style>
+</head>
+<body >
+
+    <div class="dev-banner">💡 Site en cours de développement</div>
+    <canvas aria-hidden="true" id="bgfx"></canvas>
+    <canvas aria-hidden="true" id="botfx"></canvas> <canvas id="botfx_ui"></canvas>
+
+    <header class="top">
+        <div class="top-inner">
+            <a href="#" class="brand" aria-label="Accueil Estelle IA">
+                <img src="https://github.com/LyrtrixOfficiel/estelle-formation/blob/main/t%C3%A9l%C3%A9charger.webp?raw=true" alt="Logo Estelle Formation IA" loading="lazy" />
+            </a>
+            <nav>
+                <a href="#intro">Introduction</a>
+                <a href="#formations">Formations</a>
+                <a href="#tarifs">Tarifs</a>
+                <a href="#zone">Zone</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="tel:+33745817033" class="btn alt">
+                ☎︎ 07 45 81 70 33
+            </a>
+            <button id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" class="menu-toggle">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+             <div id="mobile-menu" class="menu-popover" role="menu">
+                <a href="#intro">Introduction</a>
+                <a href="#formations">Formations</a>
+                <a href="#tarifs">Tarifs</a>
+                <a href="#zone">Zone</a>
+                 <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+                <a class="call" href="tel:+33745817033">☎︎ 07 45 81 70 33</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero">
+        <div class="hero-box">
+            <h1 class="gsap-reveal">Formation IA pour débutants</h1>
+            <p class="gsap-reveal">Apprenez l'IA simplement, avec des explications claires et sans jargon. Conçu pour les débutants, y compris les seniors, avec un premier module d'initiation et un second module pour approfondir l'IA.</p>
+            <a href="#contact" class="btn alt gsap-reveal" style="margin-top: 24px;">Réserver une formation</a>
+        </div>
+        <div class="bubble gsap-bubble" style="width:80px;height:80px;left:20%;top:30%;animation-delay:0s"></div>
+        <div class="bubble gsap-bubble" style="width:50px;height:50px;left:70%;top:40%;animation-delay:2s"></div>
+        <div class="bubble gsap-bubble" style="width:100px;height:100px;left:40%;top:70%;animation-delay:4s"></div>
+        <div class="bubble gsap-bubble" style="width:60px;height:60px;left:80%;top:20%;animation-delay:6s"></div>
+        <div class="bubble gsap-bubble" style="width:40px;height:40px;left:10%;top:60%;animation-delay:8s"></div>
+    </main>
+
+    <div style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+        
+        <section id="actus" class="animated-section" style="padding-bottom: 0;">
+            <h2 class="gsap-reveal" style="text-align: center;">✨ À la Une</h2>
+            <div class="grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="card gsap-reveal">
+                    <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;"
+                            src="https://www.canva.com/design/DAG7xsbJGHM/MrtpuFQAX5fqmNc5GJJk5Q/view?embed" 
+                            allowfullscreen="allowfullscreen" allow="fullscreen">
+                        </iframe>
+                    </div>
+                    <p style="text-align: center; font-size: 14px; color: var(--muted); margin-top: 1rem; margin-bottom: 0;">
+                        <a href="https://www.canva.com/design/DAG7xsbJGHM/MrtpuFQAX5fqmNc5GJJk5Q/view?utm_content=DAG7xsbJGHM&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" style="text-decoration: underline;">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="animated-section">
+            <h2 class="gsap-reveal">L'IA, simple et utile au quotidien</h2>
+            <div class="grid" style="max-width: 800px;">
+               <div class="card gsap-reveal">
+                    <p>Pas besoin d’être un expert en informatique : avec des explications claires, pas à pas et sans jargon, vous découvrez comment l’IA peut vous aider au quotidien.</p>
+                    <p>Les formations sont conçues pour découvrir les bases ou aller plus loin selon vos envies.</p>
+                    <p>Écrire un message, trouver une recette, traduire un texte, créer une image originale… tout devient plus simple et même ludique.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="formations" class="animated-section">
+            <h2 class="gsap-reveal">Nos Formations IA</h2>
+            <div class="grid">
+                <div class="card gsap-reveal">
+                    <h3>Module 1 : Découvrir l’intelligence artificielle</h3>
+                    <p>Un premier module pour comprendre l’IA simplement, sans jargon technique. L’objectif est de <strong>démystifier</strong> l’intelligence artificielle et de <strong>montrer ses usages concrets</strong> au quotidien.</p>
+                    <p style="margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 700; color: var(--ink);">Contenu du module :</p>
+                    <ul>
+                        <li><strong>Qu’est-ce que l’IA ?</strong> Une explication claire et illustrée, avec des exemples concrets et faciles à comprendre.</li>
+                        <li><strong>À quoi ça sert ?</strong> Découverte des principales utilisations de l’IA : écrire, créer, traduire, organiser, trouver des idées…</li>
+                        <li><strong>Ses limites et ses biais :</strong> Comprendre les erreurs possibles et apprendre à garder un esprit critique.</li>
+                        <li><strong>Démonstration pratique (ChatGPT) :</strong> Exemples en direct d’utilisation d’un outil d’IA (texte, image, aide au quotidien).</li>
+                        <li><strong>Questions & échanges :</strong> Temps libre pour poser vos questions, tester et pratiquer.</li>
+                    </ul>
+                    <p class="note" style="margin-top: 0;"><strong>Objectif :</strong> À la fin du module, vous saurez ce qu’est l’intelligence artificielle, comment l’utiliser simplement, et dans quelles situations elle peut vraiment vous aider.</p>
+                </div>
+                <div class="card gsap-reveal">
+                    <h3>Module 2 : Aller plus loin avec ChatGPT</h3>
+                    <p>Un module pour <strong>aller plus loin</strong> et apprendre à utiliser l’IA de manière plus concrète et créative. Idéal pour ceux qui ont suivi le module 1 ou qui souhaitent exploiter davantage le potentiel de ces outils au quotidien.</p>
+                    <p style="margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 700; color: var(--ink);">Contenu du module :</p>
+                    <ul>
+                        <li><strong>Bien formuler ses prompts :</strong> Apprenez à poser les bonnes questions pour obtenir des réponses claires, pertinentes et utiles.</li>
+                        <li><strong>Résumer, reformuler et trouver des idées :</strong> Découvrez comment l’IA peut vous aider à rédiger, synthétiser ou stimuler votre créativité.</li>
+                        <li><strong>Gérer ChatGPT et rester prudent :</strong> Comprenez le fonctionnement de l’outil, ses limites et les bonnes pratiques pour éviter les erreurs.</li>
+                        <li><strong>Découverte de la création d’images IA :</strong> Introduction simple à la génération d’images : comment décrire une scène, un style, un sujet.</li>
+                        <li><strong>Échanges et questions libres :</strong> Un moment pour poser vos questions ou revenir sur certains points, afin de repartir avec une compréhension claire et complète.</li>
+                    </ul>
+                    <p class="note" style="margin-top: 0;"><strong>Objectif :</strong> À la fin du module, vous saurez communiquer efficacement avec l’IA, créer des textes ou des images utiles, et utiliser ces outils en toute confiance et avec prudence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tarifs" class="animated-section">
+            <h2 class="gsap-reveal">Tarifs des formations IA</h2>
+            <div class="grid" style="max-width: 900px; margin: 0 auto;">
+                
+                <div class="card gsap-reveal">
+                    <h3>Module 1 ou Module 2 (1h)</h3>
+                    <p class="price" style="font-size: 24px;">À partir de 35 € / pers.</p>
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">Visio (1 personne) : 
+                            <strong style="color: var(--primary); float: right;">35 €</strong>
+                        </li>
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">En salle (Colmar / Sélestat) : 
+                            <strong style="color: var(--primary); float: right;">39 € / pers.</strong>
+                        </li>
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">À domicile (2 à 4 personnes) : 
+                            <strong style="color: var(--primary); float: right;">44 € / pers.</strong>
+                        </li>
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">À domicile (1 personne) : 
+                            <strong style="color: var(--primary); float: right;">49 €</strong>
+                        </li>
+                    </ul>
+                    <p class="note" style="margin-top: auto; padding-top: 1rem; color: var(--primary); font-weight: 700;">
+                        Durée : 1h. Prix par personne et par module.
+                    </p>
+                </div>
+                
+                <div class="card gsap-reveal" style="background: var(--accent-2); border-color: rgba(42, 157, 143, 0.4);">
+                    <h3 style="color: var(--ink);">Pack Modules 1 & 2 (2h)</h3>
+                    <p class="price" style="font-size: 24px; color: var(--primary);">Économisez avec le Pack !</p>
+                    <ul style="list-style-type: none; padding-left: 0; margin-top: 1rem;">
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">Visio (1 personne) : 
+                            <strong style="color: var(--ink); float: right;">60 €</strong>
+                        </li>
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">En salle (Colmar / Sélestat) : 
+                            <strong style="color: var(--ink); float: right;">69 € / pers.</strong>
+                        </li>
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">À domicile (2 à 4 personnes) : 
+                            <strong style="color: var(--ink); float: right;">79 € / pers.</strong>
+                        </li>
+                        <li style="font-weight: 700; color: var(--ink); margin-bottom: 0.75rem;">À domicile (1 personne) : 
+                            <strong style="color: var(--ink); float: right;">89 €</strong>
+                        </li>
+                    </ul>
+                    <p class="note" style="margin-top: auto; padding-top: 1rem; color: var(--ink); font-weight: 700;">
+                        Durée totale : 2h (effectuées le même jour).
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="zone" class="animated-section">
+            <h2 class="gsap-reveal">Zone d'intervention</h2>
+            <div class="grid">
+                <div class="card gsap-reveal" style="grid-column: 1 / -1;">
+                    <p>Je propose mes formations IA <strong>à domicile</strong> dans un secteur autour de <strong>Colmar, Ribeauvillé, Kaysersberg, Sélestat</strong> et les villages voisins (environ 15 km).</p>
+                    <p>Pour plus de confort, il est également possible de suivre la formation <strong>en salle à Sélestat ou Colmar</strong> (frais inclus dans le tarif).</p>
+                    <p>Au-delà de cette zone, un déplacement reste possible avec frais supplémentaires. Et si vous habitez plus loin, pas de souci : les formations peuvent aussi se faire <strong>en visioconférence</strong>.</p>
+                    <p>➡️ N’hésitez pas à me contacter pour échanger sur les possibilités et trouver la formule la plus pratique pour vous.</p>
+                    
+                    <div style="margin-top: 20px;">
+                        <img id="map-image" class="map-display" src="https://github.com/LyrtrixOfficiel/estelle-formation/blob/main/Design%20sans%20titre%20(6).png?raw=true" alt="Carte de la zone d'intervention" style="display: none;">
+                        <p style="margin-top:10px;">
+                            <a href="#" id="toggle-map-btn" class="btn">
+                                Voir la carte
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="animated-section">
+            <h2 class="gsap-reveal">Questions fréquentes</h2>
+             <div class="grid">
+                <div class="card gsap-reveal">
+                    <details>
+                        <summary>Faut-il un ordinateur puissant ?</summary>
+                        <p>Pas besoin d’un ordinateur dernier cri : un simple smartphone, une tablette ou un ordinateur classique suffisent.</p>
+                    </details>
+                    <details>
+                        <summary>Combien de temps dure une séance ?</summary>
+                        <p>1h en individuel, ou 1h15 en groupe.</p>
+                    </details>
+                    <details>
+                        <summary>Peut-on offrir la formation ?</summary>
+                        <p>Oui, sous forme de bon cadeau. Idéal pour les parents ou grands-parents curieux de découvrir l'IA.</p>
+                    </details>
+                     <details>
+                        <summary>Vous déplacez-vous ?</summary>
+                        <p>Oui, je me déplace sur Colmar, Ribeauvillé, Kaysersberg, Sélestat et villages alentours. Au-delà, possible avec frais supplémentaires ou en visioconférence.</p>
+                    </details>
+                </div>
+                 <div class="card gsap-reveal">
+                    <details>
+                        <summary>Quels sont les moyens de paiement ?</summary>
+                        <p>Les règlements se font <strong>à l’avance</strong> afin de confirmer la réservation.<br>Vous pouvez régler :</p>
+                        <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0.5rem; margin-bottom: 1rem; font-size: 16px; color: var(--muted);">
+                            <li>par virement bancaire,</li>
+                            <li>par carte bancaire,</li>
+                            <li>ou <strong>en espèces</strong>, uniquement pour les formations <strong>à domicile</strong> (à remettre avant le début de la séance).</li>
+                        </ul>
+                        <p style="margin-bottom: 0;">Cette organisation me permet de garantir le créneau réservé et de couvrir les frais liés à la préparation et à la location éventuelle d’une salle.</p>
+                    </details>
+                    <details>
+                        <summary>Puis-je annuler ou reporter ma séance ?</summary>
+                        <p>Pour les <strong>formations en salle</strong>, les réservations sont <strong>non remboursABLES</strong>, car la location et le créneau sont bloqués dès la confirmation.</p>
+                        <p>En cas d’empêchement, il est toutefois possible de <strong>remplacer la séance par une formation en visioconférence</strong>, sans frais supplémentaires.</p>
+                        <p style="margin-bottom: 0;">Les formations <strong>à domicile ou en visio</strong> peuvent, elles, être <strong>reportées</strong> si vous prévenez au moins <strong>48 h à l’avance</strong>.</p>
+                    </details>
+                    <details>
+                        <summary>Faut-il des connaissances en informatique ?</summary>
+                        <p>Pas du tout ! Les formations sont conçues pour les vrais débutants, even if you partez de zéro.</p>
+                    </details>
+                    <details>
+                        <summary>Est-ce que je peux suivre la formation avec un proche ?</summary>
+                         <p>Oui, c’est possible et même conseillé : apprendre à deux ou en petit groupe rend la formation plus conviviale et plus économique.</p>
+                    </details>
+                    <details>
+                        <summary>Et si j’oublie ce que j’ai appris ?</summary>
+                        <p>Pas d’inquiétude : chaque séance est accompagnée d’une fiche mémo claire qui résume l’essentiel pour vous aider à pratiquer.</p>
+                    </details>
+                 </div>
+             </div>
+        </section>
+
+        <section id="contact" class="animated-section">
+            <h2 class="gsap-reveal">Contactez-moi</h2>
+            <div class="grid">
+                <div class="card gsap-reveal">
+                    <p><strong>Téléphone :</strong> <a href="tel:+33745817033" style="color: var(--primary); text-decoration: underline;">07 45 81 70 33</a></p>
+                    <p><strong>Email :</strong> <a href="mailto:estelle.iaformation@gmail.com" style="color: var(--primary); text-decoration: underline;">estelle.iaformation@gmail.com</a></p>
+                    <div style="margin-top: 20px;">
+                        <a href="https://calendar.app.google/5XBZTLwJ6cYUSkbd6" rel="noopener" target="_blank" class="btn">
+                            Réserver un créneau
+                        </a>
+                    </div>
+                </div>
+                <div class="card gsap-reveal">
+                    <h3>Demander à être rappelé(e)</h3>
+                    <form action="https://api.web3forms.com/submit" id="callback-form" method="POST">
+                        <input name="access_key" type="hidden" value="91cd09a9-f131-4dd3-946c-af5896a4fc79"/>
+                        <input name="from_name" type="hidden" value="Site Estelle Formation IA"/>
+                        <input name="subject" type="hidden" value="Demande de rappel (Site Estelle Formation IA)"/>
+                        <input type="checkbox" name="botcheck" style="display: none;">
+
+                        <div>
+                            <label for="name">Nom</label>
+                            <input id="name" name="name" required type="text" placeholder="Votre nom"/>
+                        </div>
+                        <div>
+                            <label for="phone">Téléphone</label>
+                            <input id="phone" name="phone" required type="tel" placeholder="Votre numéro"/>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                            <input type="checkbox" id="rgpd-consent" name="rgpd_consent" required style="width: auto; margin-top: 5px; flex-shrink: 0; border-radius: 4px; border: 1px solid var(--border);">
+                            <label for="rgpd-consent" style="font-weight: normal; font-size: 14px; color: var(--muted); margin-bottom: 0; line-height: 1.4;">
+                                J'ai lu et j'accepte que mes données soient traitées pour répondre à ma demande. 
+                                <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: underline;">
+                                    (Voir la politique de confidentialité)
+                                </a>
+                            </label>
+                        </div>
+
+                        <button id="callback-submit" type="submit" class="btn alt">
+                            Envoyer ma demande
+                        </button>
+                        <p id="callback-status" style="margin-top: 10px; font-size: 14px;"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><strong>Notre différence :</strong> un accompagnement personnalisé à domicile, avec une pédagogie adaptée aux seniors et débutants. L’IA devient simple, utile et accessible à tous.</p>
+        <p>© <span id="year"></span> Estelle Formation IA — Colmar, Beblenheim & Sélestat et environs.</p>
+        
+        <p style="margin-top: 0.5em; font-size: 14px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 20px;">
+            <a href="cgv.html" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: underline;">
+                Conditions Générales de Vente
+            </a>
+            <a href="mentions-legales.html" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: underline;">
+                Mentions Légales
+            </a>
+            <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: underline;">
+                Politique de Confidentialité
+            </a>
+        </p>
+    </footer>
+
+    <!-- BOUTON DEMO SUPPRIMÉ -->
+
+    <div id="cookie-banner">
+        <p>Ce site utilise des cookies essentiels pour son bon fonctionnement. En continuant, vous acceptez leur utilisation. 
+           <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener">En savoir plus</a>.
+        </p>
+        <div id="cookie-banner-buttons">
+            <button id="cookie-refuse">Refuser</button>
+            <button id="cookie-accept">Accepter</button>
+        </div>
+    </div>
+
+
+    <script>
+    // ===== CONFIGURATION ROBOTS =====
+    const ROBOT_OPTIONS = {
+        FRICTION: 0.98,
+        DRAG_FRICTION: 0.965,
+        WALL_ELASTICITY: 0.6,
+        COLLISION_ELASTICITY: 0.7,
+        STICKY_DRAG_FORCE: 0.25,
+        MOUSE_REPEL_RADIUS: 220,
+        MOUSE_REPEL_FORCE: 1.6,
+        ROBOT_COUNT: 3
+    };
+
+    (function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const saveData = (navigator.connection && navigator.connection.saveData) || false;
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const LOW_MOTION = saveData || prefersReduced;
+
+      /* ========= TECH BACKGROUND ========= */
+      (function(){
+        const canvas = document.getElementById('bgfx');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const CONFIG = {
+            particleCount: 80, 
+            connectionDistance: 190, 
+            mouseDistance: 280, 
+            color: '42, 157, 143', 
+            baseAlpha: 0.35
+        };
+
+        let w, h;
+        const particles = [];
+
+        const resize = () => { w = canvas.width = innerWidth; h = canvas.height = innerHeight; };
+        window.addEventListener('resize', resize);
+        resize();
+
+        const mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.vx = (Math.random() - 0.5) * 0.4; 
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.size = Math.random() * 2.5 + 1; 
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy;
+                if (this.x < 0 || this.x > w) this.vx *= -1;
+                if (this.y < 0 || this.y > h) this.vy *= -1;
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if(dist < CONFIG.mouseDistance) {
+                    const force = (CONFIG.mouseDistance - dist) / CONFIG.mouseDistance;
+                    const angle = Math.atan2(dy, dx);
+                    this.x -= Math.cos(angle) * force * 1.5; 
+                    this.y -= Math.sin(angle) * force * 1.5;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(${CONFIG.color}, ${CONFIG.baseAlpha + 0.3})`;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+
+        const init = () => {
+            particles.length = 0;
+            const count = Math.floor((w * h) / 20000); 
+            for (let i = 0; i < count; i++) particles.push(new Particle());
+        };
+        init();
+        window.addEventListener('resize', init);
+
+        const animate = () => {
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach(p => { p.update(); p.draw(); });
+            ctx.lineWidth = 1; 
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < CONFIG.connectionDistance) {
+                        const opacity = 1 - (dist / CONFIG.connectionDistance);
+                        ctx.strokeStyle = `rgba(${CONFIG.color}, ${opacity * (CONFIG.baseAlpha + 0.1)})`;
+                        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        };
+        animate();
+      })();
+
+      /* ========= ROBOTS (MODERNISÉ) ========= */
+      (function(){
+        const canvas=document.getElementById('botfx'); if(!canvas) return;
+        const ctx=canvas.getContext('2d');
+        let visible = true; document.addEventListener('visibilitychange',()=>{visible = document.visibilityState==='visible';});
+        let W=0,H=0,DPR=Math.min(devicePixelRatio||1, LOW_MOTION?1.25:1.5);
+        function resize(){W=canvas.width=innerWidth*DPR;H=canvas.height=innerHeight*DPR;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';}
+        addEventListener('resize',resize); resize();
+
+        function rr(ctx,x,y,w,h,r){const rad=Math.min(r,Math.min(w,h)/2);ctx.beginPath();ctx.moveTo(x+rad,y);ctx.arcTo(x+w,y,x+w,y+h,rad);ctx.arcTo(x+w,y+h,x,y+h,rad);ctx.arcTo(x,y+h,x,y,rad);ctx.arcTo(x,y,x+w,y,rad);ctx.closePath();}
+        const RAND=(a,b)=>a+Math.random()*(b-a);
+
+        let maskRects=[]; let maskTimer=null; function updateMask(){ maskRects=Array.from(document.querySelectorAll('.card')).map(el=>el.getBoundingClientRect()); }
+        function scheduleMask(){ if(maskTimer) return; maskTimer=setTimeout(()=>{updateMask(); maskTimer=null;},100); }
+        updateMask(); addEventListener('resize',scheduleMask); addEventListener('scroll',scheduleMask,{passive:true});
+
+        const particles=[]; const MAX_P= LOW_MOTION ? 240 : 520;
+        function emitBurst(x,y,color,intensity){
+          const multiplier= LOW_MOTION ? 1.2 : 1.5;
+          const n=Math.floor((LOW_MOTION?16:22 + Math.random()*22)*(intensity||1));
+          for(let i=0;i<n;i++){
+            if(particles.length>MAX_P){particles.splice(0,particles.length-MAX_P);}
+            const ang=Math.random()*Math.PI*2;
+            const sp=RAND(LOW_MOTION?60:80, LOW_MOTION?200:260)*DPR*(0.4+(intensity||1)*0.6)/1000;
+            const baseR=RAND(3,6)*DPR*multiplier;
+            particles.push({x,y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,r:baseR,life:RAND(360,LOW_MOTION?620:750),t:0,col:color==='teal'?[42,157,143]:[244,162,97]});
+          }
+        }
+        function stepParticles(dt){
+          for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.t+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=0.983;p.vy*=0.983;if(p.t>p.life)particles.splice(i,1);}
+        }
+        function drawParticles(){
+          if(!particles.length) return; ctx.save(); ctx.globalCompositeOperation='lighter';
+          for(const p of particles){
+            const k=1-Math.min(1,p.t/p.life); const a=(LOW_MOTION?0.26:0.32)*k;
+            const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.2);
+            g.addColorStop(0,`rgba(${p.col[0]},${p.col[1]},${p.col[2]},${a})`);
+            g.addColorStop(1,`rgba(${p.col[0]},${p.col[1]},${p.col[2]},0)`);
+            ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*2.2,0,Math.PI*2); ctx.fill();
+          }
+          ctx.restore();
+        }
+
+        const robots=[]; const COUNT = ROBOT_OPTIONS.ROBOT_COUNT; 
+        function init(){
+          robots.length=0;
+          for(let i=0;i<COUNT;i++){
+            const r=RAND(36,54)*DPR;
+            robots.push({
+              x:RAND(r,W-r), y:RAND(r,H-r), vx:0, vy:0, r, tint:(i%2?'teal':'orange'),
+              blinking:false, blinkUntil:0, nextBlinkAt: 2+Math.random()*3, winkSide:'both',
+              waving:false,  waveUntil:0,  nextWaveAt: 6+Math.random()*6,
+              hurt:false,    hurtUntil:0,
+              tilt: 0 // AJOUT: Inclinaison pour plus de dynamisme
+            });
+          }
+        }
+        init();
+        try{ window.__botfx = { robots, canvas: canvas, dpr: DPR }; }catch(e){}
+
+        window.__botfx_grabbed = -1; 
+        const mouse={x:-1e3,y:-1e3,vx:0,vy:0,px:-1e3,py:-1e3,active:false,id:null};
+        
+        canvas.addEventListener('pointerdown',e=>{
+          mouse.active=true; mouse.id=e.pointerId;
+          const rect = canvas.getBoundingClientRect();
+          mouse.px=mouse.x; mouse.py=mouse.y; mouse.x=(e.clientX - rect.left)*DPR; mouse.y=(e.clientY - rect.top)*DPR;
+          mouse.vx=0; mouse.vy=0; 
+          window.__botfx_grabbed=-1;
+          for(let i=robots.length-1;i>=0;i--){const b=robots[i]; const dx=b.x-mouse.x, dy=b.y-mouse.y; if(dx*dx+dy*dy <= (b.r*1.2)*(b.r*1.2)){ 
+            window.__botfx_grabbed=i; 
+            canvas.style.cursor = 'grabbing';
+            // IMPORTANT : Empêcher le scroll uniquement si on attrape un robot
+            canvas.style.touchAction = 'none';
+            break; 
+          }}
+          if(window.__botfx_grabbed === -1) canvas.style.cursor = 'grab';
+          if(window.__botfx_grabbed !== -1) e.preventDefault(); // Pour compatibilité Desktop
+        },{passive:false});
+
+        canvas.addEventListener('pointermove',e=>{
+          if(mouse.active && (mouse.id===null || e.pointerId===mouse.id)){
+             const rect = canvas.getBoundingClientRect();
+            mouse.px=mouse.x; mouse.py=mouse.y; mouse.x=(e.clientX - rect.left)*DPR; mouse.y=(e.clientY - rect.top)*DPR;
+            mouse.vx=mouse.x-mouse.px; mouse.vy=mouse.y-mouse.py;
+            if(window.__botfx_grabbed !== -1) e.preventDefault();
+          }
+        },{passive:false});
+        
+        function endPress(){
+           mouse.active=false; mouse.id=null; window.__botfx_grabbed=-1; 
+           canvas.style.cursor = 'grab';
+           // Restaurer le scroll
+           canvas.style.touchAction = 'auto';
+        }
+        window.addEventListener('pointerup',endPress,{passive:true});
+        window.addEventListener('pointercancel',endPress,{passive:true});
+        canvas.addEventListener('pointerleave', ()=>{ if (!mouse.active) canvas.style.cursor = 'grab'; });
+
+        function step(){
+          if(!visible) return;
+          const now=performance.now()/1000; const Rbase=ROBOT_OPTIONS.MOUSE_REPEL_RADIUS*DPR;
+          
+          for(const a of robots){ 
+              // Logique de clignement/vague existante...
+              if(!a.blinking && now>=a.nextBlinkAt){ a.blinking=true; a.blinkUntil=now+0.12; a.winkSide=(Math.random()<0.25?'both':(Math.random()<0.5?'left':'right')); a.nextBlinkAt=now + (2+Math.random()*3); } 
+              if(a.blinking && now>=a.blinkUntil){ a.blinking=false; } 
+              if(!a.waving && now>=a.nextWaveAt && !mouse.active){ a.waving=true; a.waveUntil=now+0.7; a.nextWaveAt=now + (6+Math.random()*6); } 
+              if(a.waving && now>=a.waveUntil){ a.waving=false; } 
+              if(a.hurt && now>=a.hurtUntil){ a.hurt=false; } 
+          }
+          
+          for(let i=0;i<robots.length;i++){ 
+            const a=robots[i]; 
+            if(mouse.active){ 
+              if(i===window.__botfx_grabbed){ 
+                // STICKY DRAG
+                const dx = mouse.x - a.x;
+                const dy = mouse.y - a.y;
+                a.vx += dx * ROBOT_OPTIONS.STICKY_DRAG_FORCE;
+                a.vy += dy * ROBOT_OPTIONS.STICKY_DRAG_FORCE;
+              } else if(window.__botfx_grabbed===-1){ 
+                const dx=a.x-mouse.x, dy=a.y-mouse.y; const d2=dx*dx+dy*dy; const R=Rbase+a.r; 
+                if(d2<R*R){ 
+                  const d=Math.sqrt(d2)||1; const nx=dx/d, ny=dy/d; const f=(1-d/R); 
+                  a.vx += (nx * ROBOT_OPTIONS.MOUSE_REPEL_FORCE + mouse.vx*0.04)*f; 
+                  a.vy += (ny * ROBOT_OPTIONS.MOUSE_REPEL_FORCE + mouse.vy*0.04)*f; 
+                } 
+              } 
+            } 
+            
+            a.x+=a.vx; a.y+=a.vy; 
+            a.vx*=ROBOT_OPTIONS.FRICTION; a.vy*=ROBOT_OPTIONS.FRICTION; 
+            if(!mouse.active){ a.vx*=ROBOT_OPTIONS.DRAG_FRICTION; a.vy*=ROBOT_OPTIONS.DRAG_FRICTION; } 
+            
+            if(a.x<a.r){a.x=a.r; a.vx=Math.abs(a.vx)*ROBOT_OPTIONS.WALL_ELASTICITY;} 
+            if(a.x>W-a.r){a.x=W-a.r; a.vx=-Math.abs(a.vx)*ROBOT_OPTIONS.WALL_ELASTICITY;} 
+            if(a.y<a.r){a.y=a.r; a.vy=Math.abs(a.vy)*ROBOT_OPTIONS.WALL_ELASTICITY;} 
+            if(a.y>H-a.r){a.y=H-a.r; a.vy=-Math.abs(a.vy)*ROBOT_OPTIONS.WALL_ELASTICITY;} 
+
+            // AJOUT: Calcul de l'inclinaison basé sur la vitesse horizontale
+            // Cela donne un effet "dessin animé" lors des déplacements
+            const targetTilt = (a.vx / DPR) * 0.05; 
+            a.tilt += (targetTilt - a.tilt) * 0.1; // Lissage
+          }
+          
+          for(let i=0;i<robots.length;i++){ 
+            for(let j=i+1;j<robots.length;j++){ 
+              const a=robots[i], b=robots[j]; const dx=a.x-b.x, dy=a.y-b.y; const min=a.r+b.r; const d2=dx*dx+dy*dy; 
+              if(d2>0 && d2<min*min){ 
+                const d=Math.sqrt(d2)||1; const nx=dx/d, ny=dy/d; const overlap=(min-d)*0.5; 
+                a.x+=nx*overlap; a.y+=ny*overlap; b.x-=nx*overlap; b.y-=ny*overlap; 
+                const dvx=a.vx-b.vx, dvy=a.vy-b.vy; const vn=dvx*nx + dvy*ny; 
+                if(vn<0){ 
+                  const impulse = vn*ROBOT_OPTIONS.COLLISION_ELASTICITY; 
+                  a.vx-=impulse*nx; a.vy-=impulse*ny; b.vx+=impulse*nx; b.vy+=impulse*ny; 
+                } 
+                const intensity=Math.min(1.3, Math.abs(vn)*1.4 + 0.5); 
+                emitBurst((a.x+b.x)/2,(a.y+b.y)/2, Math.random()<0.5?a.tint:b.tint, intensity); 
+                const nowS=performance.now()/1000; a.hurt=true; b.hurt=true; a.hurtUntil=nowS+RAND(0.5,0.7); b.hurtUntil=nowS+RAND(0.5,0.7); 
+              } 
+            } 
+          }
+        }
+
+        function drawRobot(b){
+          ctx.save();
+          
+          // AJOUT: Rotation autour du centre du robot pour l'effet de mouvement
+          ctx.translate(b.x, b.y);
+          ctx.rotate(b.tilt);
+          ctx.translate(-b.x, -b.y);
+
+          const w=b.r*1.8, h=b.r*1.6; const rx=b.x-w/2, ry=b.y-h/2;
+          ctx.shadowBlur=26*DPR; ctx.shadowColor=b.tint==='teal'?'rgba(42,157,143,0.65)':'rgba(244,162,97,0.65)';
+          ctx.fillStyle=b.tint==='teal'?'rgba(42,157,143,0.98)':'rgba(244,162,97,0.98)';
+          rr(ctx,rx,ry,w,h,12*DPR); ctx.fill(); ctx.shadowBlur=0; ctx.lineWidth=2*DPR; ctx.strokeStyle='rgba(255,255,255,0.9)'; ctx.stroke();
+          const fpw=w*0.78, fph=h*0.48; const fpx=b.x-fpw/2, fpy=b.y-fph*0.15;
+          ctx.fillStyle='rgba(255,255,255,0.85)'; rr(ctx,fpx,fpy,fpw,fph,10*DPR); ctx.fill();
+          const es=b.r*0.22, ey=b.y;
+          if(b.hurt){
+            ctx.strokeStyle='rgba(14,27,42,0.95)'; ctx.lineWidth=2*DPR; ctx.lineCap='round';
+            ctx.beginPath(); ctx.moveTo(fpx+fpw*0.25-es, ey-es); ctx.lineTo(fpx+fpw*0.25+es, ey+es);
+            ctx.moveTo(fpx+fpw*0.75+es, ey-es); ctx.lineTo(fpx+fpw*0.75-es, ey+es); ctx.stroke();
+            ctx.beginPath(); ctx.arc(b.x, b.y+es*1.1, es*0.9, 0.85*Math.PI, 0.15*Math.PI, true); ctx.stroke();
+          } else {
+            ctx.fillStyle='rgba(14,27,42,0.95)';
+            const leftOpen=!(b.blinking&&(b.winkSide==='left'||b.winkSide==='both'));
+            const rightOpen=!(b.blinking&&(b.winkSide==='right'||b.winkSide==='both'));
+            if(leftOpen){ rr(ctx,fpx+fpw*0.25-es, ey-es, es*2, es*2, es); ctx.fill(); } else { ctx.fillRect(fpx+fpw*0.25-es, ey-1*DPR, es*2, 2*DPR); }
+            if(rightOpen){ rr(ctx,fpx+fpw*0.75-es, ey-es, es*2, es*2, es); ctx.fill(); } else { ctx.fillRect(fpx+fpw*0.75-es, ey-1*DPR, es*2, 2*DPR); }
+            ctx.strokeStyle='rgba(14,27,42,0.8)'; ctx.lineWidth=2*DPR; ctx.beginPath(); ctx.arc(b.x, b.y+es*0.9, es*0.9, 0.15*Math.PI, 0.85*Math.PI); ctx.stroke();
+          }
+          ctx.fillStyle='rgba(255,255,255,0.9)';
+          let leftArmY=b.y-h*0.05, rightArmY=b.y-h*0.05; if(b.waving){rightArmY-=h*0.25;}
+          rr(ctx,b.x-w*0.45, leftArmY, w*0.18, h*0.12, 6*DPR); ctx.fill();
+          rr(ctx,b.x+w*0.27, rightArmY, w*0.18, h*0.12, 6*DPR); ctx.fill();
+          rr(ctx,b.x-w*0.22, b.y+h*0.45, w*0.18, h*0.18, 6*DPR); ctx.fill();
+          rr(ctx,b.x+w*0.04, b.y+h*0.45, w*0.18, h*0.18, 6*DPR); ctx.fill();
+          ctx.strokeStyle='rgba(255,255,255,0.9)'; ctx.lineWidth=2*DPR;
+          ctx.beginPath();
+          ctx.moveTo(b.x-w*0.18, ry+4*DPR); ctx.lineTo(b.x-w*0.18, ry-h*0.25);
+          ctx.moveTo(b.x+w*0.18, ry+4*DPR); ctx.lineTo(b.x+w*0.18, ry-h*0.25);
+          ctx.stroke(); ctx.beginPath();
+          ctx.arc(b.x-w*0.18, ry-h*0.28, 3.5*DPR, 0, Math.PI*2);
+          ctx.arc(b.x+w*0.18, ry-h*0.28, 3.5*DPR, 0, Math.PI*2);
+          ctx.fillStyle='rgba(255,255,255,0.95)'; ctx.fill();
+          
+          ctx.restore();
+         }
+        function maskCards(){
+          if(!maskRects||!maskRects.length) return;
+          ctx.save();
+          try{
+            ctx.globalCompositeOperation='destination-out';
+            ctx.filter='blur(6px)';
+            ctx.fillStyle='rgba(0,0,0,0.95)';
+            for(const r of maskRects){
+              const x=r.left*DPR, y=r.top*DPR, w=r.width*DPR, h=r.height*DPR;
+              if(!Number.isFinite(x)||!Number.isFinite(y)||w<=0||h<=0) continue;
+              rr(ctx,x-12*DPR,y-12*DPR,w+24*DPR,h+24*DPR,16*DPR); ctx.fill();
+            }
+          }catch(e){}
+          ctx.filter='none';
+          ctx.restore();
+         }
+        function draw(){
+          if(!visible){ return; }
+          ctx.clearRect(0,0,W,H);
+          for(const b of robots){ drawRobot(b); }
+          drawParticles();
+          maskCards();
+          ctx.globalCompositeOperation='source-over';
+        }
+
+        let last=performance.now();
+        function loop(){
+          const now=performance.now(); const dt=Math.min(48, now-last); last=now;
+          step(); stepParticles(dt); draw(); requestAnimationFrame(loop);
+        }
+        loop();
+      })();
+
+      /* ========= UI Robots (IA Améliorée) ========= */
+      (function(){
+        function getRobots(){ try{ if(window.__botfx && Array.isArray(window.__botfx.robots)) return window.__botfx.robots; }catch(e){} return null; }
+        const bots = getRobots();
+        const botCanvas = document.getElementById('botfx');
+        const ui = document.getElementById('botfx_ui');
+        if(!botCanvas || !ui || !bots) return;
+
+        const DPR = Math.min((window.__botfx && __botfx.dpr) || window.devicePixelRatio || 1, 1.5);
+        function resize(){
+          const r = botCanvas.getBoundingClientRect();
+          ui.width = Math.max(16, Math.floor(r.width * DPR));
+          ui.height = Math.max(16, Math.floor(r.height * DPR));
+          ui.style.width = r.width + "px"; ui.style.height = r.height + "px";
+          ui.style.left = r.left + window.scrollX + "px";
+          ui.style.top = r.top + window.scrollY + "px";
+        }
+        addEventListener('resize', resize, {passive:true});
+        addEventListener('scroll', resize, {passive:true});
+        resize();
+        const ctx = ui.getContext('2d');
+
+        const DAMPING = 0.9975, SPEED_CAP_BASE = 9.5, SEP_FORCE = 0.05, POST_HUG_KICK = 0.9;
+        let seed = 999; function rand(){ seed = (seed*1664525+1013904223)>>>0; return (seed&0xffff)/0xffff; }
+        function between(a,b){ return a + (b-a)*rand(); }
+
+        const sayings = ["On se voit quand ?","Besoin d’un coup de main ?","Contactez-nous 👋","Une question sur l’IA ?","Prêt à essayer ?","Réserve un créneau 📅"];
+        let nextSpeakAt = performance.now() + 20000, lastSpeaker=-1;
+        function scheduleSpeech(now){
+          if(now < nextSpeakAt) return; nextSpeakAt = now + 20000;
+          let idx = Math.floor(rand()*bots.length); if(bots.length>1 && idx===lastSpeaker) idx = (idx+1)%bots.length; lastSpeaker = idx;
+          const b = bots[idx]; (b._ai||(b._ai={})).speech = sayings[Math.floor(rand()*sayings.length)]; b._ai.tSpeechUntil = now + 3000;
+         }
+        let nextPairAt = performance.now() + 60000;
+        function schedulePair(now){
+          if(now < nextPairAt || bots.length<2) return; nextPairAt = now + 60000;
+          let i = Math.floor(rand()*bots.length), j = Math.floor(rand()*bots.length); if(j===i) j = (j+1)%bots.length;
+          const A=bots[i], B=bots[j]; (A._ai||(A._ai={})).mood="seekmate"; A._ai.target=j; (B._ai||(B._ai={})).mood="seekmate"; B._ai.target=i;
+         }
+        let nextBoostAt = performance.now() + between(12000,22000);
+        function scheduleBoost(now){
+          if(now < nextBoostAt) return; nextBoostAt = now + between(12000,22000); const i = Math.floor(rand()*bots.length);
+          const b=bots[i]; const ai=(b._ai||(b._ai={})); ai.boostUntil = now + 1200; ai.boostDir = Math.atan2(b.vy,b.vx) + between(-0.8,0.8);
+          if(now > (ai.tSpeechUntil||0) && now > nextSpeakAt-5000){ ai.speech="Wouhouuuu !"; ai.tSpeechUntil = now + 1200; }
+         }
+        let nextMalAt = performance.now() + 180000, malfunctionBot=-1;
+        function scheduleMal(now){
+          if(now < nextMalAt || bots.length===0) return; nextMalAt = now + 180000; malfunctionBot = Math.floor(rand()*bots.length);
+          const b=bots[malfunctionBot]; const ai=(b._ai||(b._ai={})); ai.malPhase="spin"; ai.malUntil=now+2000; ai.spinSpeed=between(0.3,0.6);
+        }
+        bots.forEach(b=>{ b._ai = Object.assign(b._ai||{}, { trail:[], mood:'wander', target:null, hugging:false, hugUntil:0, hugWith:null, hugCooldownUntil:0, speedFactor: between(0.7,1.35), speedDriftAt: performance.now() + between(8000,16000), angle: 0, speech:null, tSpeechUntil:0, boostUntil:0, boostDir:0, malPhase:null, malUntil:0, spinSpeed:0, recoverAt:0 }); });
+
+        function step(dt){
+           const now = performance.now(); scheduleSpeech(now); schedulePair(now); scheduleBoost(now); scheduleMal(now);
+          for(const b of bots){ const ai=b._ai; if(now>=ai.speedDriftAt){ ai.speedFactor = Math.min(1.5, Math.max(0.65, ai.speedFactor + between(-0.25,0.25))); ai.speedDriftAt = now + between(8000,16000); } }
+          for(let i=0;i<bots.length;i++){ for(let j=i+1;j<bots.length;j++){ const a=bots[i], b=bots[j], ai=a._ai, bi=b._ai; if(ai.hugging || bi.hugging) continue; const dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy; const minD=(a.r+b.r)*1.5, minD2=minD*minD; if(d2>0 && d2<minD2){ const d=Math.sqrt(d2)||1, nx=dx/d, ny=dy/d; const push=(minD-d)*SEP_FORCE; a.vx+=nx*push; a.vy+=ny*push; b.vx-=nx*push; b.vy-=ny*push; } } }
+          
+          for(let i=0;i<bots.length;i++){ 
+            const b=bots[i], ai=b._ai; 
+            if(window.__botfx_grabbed === i) continue;
+            
+            if(i===malfunctionBot && ai.malPhase){ if(ai.malPhase==="spin"){ ai.angle += ai.spinSpeed; b.vx*=0.95; b.vy*=0.95; if(now>=ai.malUntil){ ai.malPhase="spinFly"; ai.malUntil=now+4000; const dir = between(0, Math.PI*2); b.vx+=Math.cos(dir)*6; b.vy+=Math.sin(dir)*6; } } else if(ai.malPhase==="spinFly"){ ai.angle += ai.spinSpeed*1.8; const sp = Math.hypot(b.vx,b.vy); if(sp<10){ b.vx*=1.06; b.vy*=1.06; } if(now>=ai.malUntil){ ai.malPhase=null; malfunctionBot=-1; ai.recoverAt=now+2000; } } else if(ai.recoverAt && now>=ai.recoverAt){ ai.recoverAt=0; ai.speech="Jetpack HS !"; ai.tSpeechUntil = now + 4000; } } 
+            
+            const jitter = 0.028 * ai.speedFactor; b.vx += between(-jitter, jitter); b.vy += between(-jitter, jitter); 
+            
+            if(ai.mood==="seekmate" && typeof ai.target==="number" && now > (ai.hugCooldownUntil||0)){ const t=bots[ai.target]; if(t){ const dx=t.x-b.x, dy=t.y-b.y, d=Math.hypot(dx,dy)||1, k=0.05*ai.speedFactor; b.vx += (dx/d)*k; b.vy += (dy/d)*k; const rel = Math.hypot(b.vx - t.vx, b.vy - t.vy); if(d < (b.r+t.r)*1.05 && rel < 2.5){ ai.hugging=true; ai.hugUntil=now+2000; ai.hugWith=ai.target; ai.mood="hug"; const tj=t._ai||(t._ai={}); tj.hugging=true; tj.hugUntil=now+2000; tj.hugWith=i; tj.mood="hug"; b.vx*=0.2; b.vy*=0.2; t.vx*=0.2; t.vy*=0.2; } } } 
+            
+            if(ai.boostUntil && now < ai.boostUntil){ const p = 0.9 * ai.speedFactor; b.vx += Math.cos(ai.boostDir)*p; b.vy += Math.sin(ai.boostDir)*p; } 
+            
+            if(ai.hugging){ if(now >= ai.hugUntil){ ai.hugging=false; ai.mood="wander"; ai.hugCooldownUntil = now + between(4000,9000); const partner = typeof ai.hugWith==="number" ? bots[ai.hugWith] : null; if(partner){ const dx=b.x-partner.x, dy=b.y-partner.y; const d=Math.hypot(dx,dy)||1, nx=dx/d, ny=dy/d; b.vx += nx*POST_HUG_KICK; b.vy += ny*POST_HUG_KICK; } ai.hugWith=null; } else { b.vx*=0.85; b.vy*=0.85; } } 
+            
+            const W=ui.width, H=ui.height; 
+            if(b.x < b.r*1.5) b.vx += 0.14; if(b.x > W - b.r*1.5) b.vx -= 0.14; 
+            if(b.y < b.r*1.5) b.vy += 0.14; if(b.y > H - b.r*1.5) b.vy -= 0.14; 
+            
+            const cap = SPEED_CAP_BASE * ai.speedFactor; const sp = Math.hypot(b.vx,b.vy); 
+            if(sp>cap){ b.vx = b.vx/sp*cap; b.vy = b.vy/sp*cap; } 
+            
+            if(Math.hypot(b.vx,b.vy) > 0.6){ ai.trail = ai.trail || []; ai.trail.push({x:b.x, y:b.y, t:performance.now()}); } if(ai.trail && ai.trail.length>18) ai.trail.splice(0, ai.trail.length-18); if(sp>0.0001){ const ang = Math.atan2(b.vy,b.vy); ai.angle += (ang - ai.angle) * 0.12; } 
+          }
+        }
+
+        function draw(){
+           ctx.clearRect(0,0,ui.width,ui.height); const now = performance.now();
+          for(const b of bots){ const ai=b._ai||{}; const baseY = b.y + b.r*0.95; const haloW = Math.max(16, b.r*1.2); const haloH = Math.max(6, b.r*0.35); ctx.save(); ctx.globalAlpha = 0.55; ctx.shadowBlur = 18; ctx.shadowColor = "rgba(100,220,255,0.55)"; ctx.fillStyle = "rgba(120,220,255,0.18)"; ctx.beginPath(); ctx.ellipse(b.x, baseY, haloW, haloH, 0, 0, Math.PI*2); ctx.fill(); ctx.restore(); if(ai.hugging && now < ai.hugUntil){ ctx.strokeStyle="rgba(14,27,42,0.95)"; ctx.lineWidth=3; const armR=b.r*0.9, swing=Math.sin(now/180)*0.25; ctx.beginPath(); ctx.arc(b.x,b.y,armR,(0.25+swing)*Math.PI,(0.75-swing)*Math.PI); ctx.stroke(); ctx.beginPath(); ctx.arc(b.x,b.y,armR,(1.25-swing)*Math.PI,(1.75+swing)*Math.PI); ctx.stroke(); ctx.fillStyle="white"; ctx.beginPath(); ctx.arc(b.x- b.r*0.35, b.y- b.r*0.2, 2.5, 0, Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.arc(b.x+ b.r*0.35, b.y- b.r*0.2, 2.5, 0, Math.PI*2); ctx.fill(); } if(now < (ai.tSpeechUntil||0) && ai.speech){ const text = ai.speech; ctx.font="700 " + (14*DPR/1.5) + "px system-ui, sans-serif"; ctx.textBaseline="top"; const padding=8*DPR/1.5, tw=Math.min(260*DPR/1.5, ctx.measureText(text).width+padding*2); const th=28*DPR/1.5; const bx = Math.max(8, Math.min(ui.width - tw - 8, b.x - tw/2)); const by = Math.max(8, b.y - b.r - th - 14*DPR/1.5); ctx.fillStyle="rgba(255,255,255,0.95)"; ctx.strokeStyle="rgba(0,0,0,0.12)"; ctx.lineWidth=1*DPR/1.5; if(ctx.roundRect){ ctx.beginPath(); ctx.roundRect(bx,by,tw,th,10*DPR/1.5); ctx.fill(); ctx.stroke(); } else { ctx.fillRect(bx,by,tw,th); ctx.strokeRect(bx,by,tw,th); } ctx.beginPath(); ctx.moveTo(b.x, by+th); ctx.lineTo(b.x-6*DPR/1.5, by+th+8*DPR/1.5); ctx.lineTo(b.x+6*DPR/1.5, by+th); ctx.closePath(); ctx.fill(); ctx.fillStyle="#0e1b2a"; ctx.fillText(text, bx+padding, by+7*DPR/1.5); } }
+        }
+
+        let last = performance.now();
+        function tick(){
+           const now = performance.now(); const dt = Math.min(40, now-last); last=now; if(!(window.document && document.hidden)){ step(dt/16.0); draw(); } requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        addEventListener('pointerup', ()=>{ for(const b of bots){ if (b._ai) b._ai.grabbed=false; } }, {passive:true});
+      })();
+
+    })();
+    </script>
+    
+    <script>
+    (function(){
+       const btn = document.querySelector('.menu-toggle');
+      const pop = document.querySelector('#mobile-menu');
+      if(!btn || !pop) return;
+      const open = () => { pop.classList.add('open'); btn.classList.add('active'); btn.setAttribute('aria-expanded', 'true'); };
+      const close = () => { pop.classList.remove('open'); btn.classList.remove('active'); btn.setAttribute('aria-expanded', 'false'); };
+      const toggle = () => { if(!pop.classList.contains('open')) open(); else close(); };
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); }, {passive:false});
+      document.addEventListener('click', (e)=>{ if(pop.classList.contains('open') && !pop.contains(e.target) && e.target !== btn && !btn.contains(e.target)){ close(); } }, {passive:true});
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); }, {passive:true});
+      pop.addEventListener('click', (e)=>{ if(e.target.tagName === 'A'){ close(); } }, {passive:true});
+    })();
+    </script>
+    
+    <script>
+    (function(){
+        var f = document.getElementById('callback-form'); if (!f) return;
+      var s = document.getElementById('callback-status');
+      var b = document.getElementById('callback-submit');
+      f.addEventListener('submit', function(e){
+        if (!window.fetch) return;
+        e.preventDefault();
+        if (s) s.textContent = 'Envoi en cours...';
+        if (b) b.disabled = true;
+        if (f.querySelector('input[name="website"]') && f.querySelector('input[name="website"]').value) return;
+        if (f.botcheck && f.botcheck.checked) return;
+
+        fetch(f.action, { method:'POST', body: new FormData(f) })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              if (s) s.textContent = '✅ Merci ! Nous vous rappelons rapidement.';
+              f.reset();
+            } else {
+              if (s) s.textContent = '❌ Une erreur est survenue. Veuillez réessayer.';
+              console.error('Web3Forms Error:', data.message);
+            }
+          })
+          .catch(error => {
+            if (s) s.textContent = '⚠️ Erreur réseau. Vérifiez votre connexion et réessayez.';
+            console.error('Fetch Error:', error);
+          })
+          .finally(() => {
+            if (b) b.disabled = false;
+            setTimeout(() => { if(s) s.textContent = ''; }, 5000);
+          });
+      });
+    })();
+    </script>
+    
+    <!-- ANIMATIONS GSAP MODERNISÉES -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Animation d'intro (Hero) - Plus dynamique avec "Back.out"
+        gsap.to(".hero-box .gsap-reveal", {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 1,
+            ease: "back.out(1.7)", // Effet "Pop"
+            stagger: 0.1,
+            delay: 0.2
+        });
+
+        // 2. Animation spécifique des Bulles (Pop in)
+        gsap.from(".gsap-bubble", {
+            scale: 0,
+            opacity: 0,
+            duration: 1.2,
+            ease: "elastic.out(1, 0.5)",
+            stagger: 0.15,
+            delay: 0.5
+        });
+
+        // 3. Animations au scroll
+        document.querySelectorAll('.animated-section').forEach(section => {
+            const reveals = section.querySelectorAll('.gsap-reveal');
+            if (reveals.length === 0) return;
+
+            gsap.fromTo(reveals, 
+                { 
+                    y: 50, 
+                    opacity: 0, 
+                    scale: 0.95 
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: "power3.out", // Plus fluide
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%", // Déclenche un peu plus tôt
+                        toggleActions: "play none none reverse" // Rejoue à l'envers si on remonte (plus vivant)
+                    }
+                }
+            );
+        });
+
+    }); 
+    </script>
+
+    <script>
+    (function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept');
+            const refuseBtn = document.getElementById('cookie-refuse');
+
+            if (!banner || !acceptBtn || !refuseBtn) return;
+
+            const getCookie = (name) => {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            };
+
+            if (getCookie('cookie_consent')) {
+                banner.style.display = 'none';
+                return;
+            }
+
+            banner.classList.add('show');
+
+            const setConsent = (value) => {
+                banner.classList.remove('show');
+                const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+                document.cookie = `cookie_consent=${value}; expires=${expires}; path=/; SameSite=Lax`;
+                setTimeout(() => { banner.style.display = 'none'; }, 500);
+            };
+
+            acceptBtn.addEventListener('click', () => setConsent('accepted'));
+            refuseBtn.addEventListener('click', () => setConsent('refused'));
+        });
+    })();
+    </script>
+
+    <script>
+    (function() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('toggle-map-btn');
+            const mapImage = document.getElementById('map-image');
+
+            if (!toggleBtn || !mapImage) return;
+
+            toggleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isHidden = mapImage.style.display === 'none';
+                if (isHidden) {
+                    mapImage.style.display = 'block';
+                    toggleBtn.textContent = 'Masquer la carte';
+                } else {
+                    mapImage.style.display = 'none';
+                    toggleBtn.textContent = 'Voir la carte';
+                }
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>
