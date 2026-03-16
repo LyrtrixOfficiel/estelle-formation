@@ -133,12 +133,14 @@ input, textarea { font: inherit; }
   letter-spacing: 0.1em;
 }
 
-/* --- 3D SCENE --- */
+/* --- AMBIENT SCENE --- */
 #scene {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  width: 100%;
+  height: 100%;
 }
 
 /* --- GRAIN --- */
