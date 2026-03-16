@@ -1,152 +1,180 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <title>Mentions légales & Politique de confidentialité – Estelle Formation IA</title>
-    <meta name="robots" content="noindex, nofollow" />
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Fraunces:opsz,wght@9..144,900&display=swap" rel="stylesheet"/>
-    <style>
-        :root{
-          --bg:#f1f7fb; --paper:#fffaf4; --ink:#0e1b2a; --muted:#3a5f7a;
-          --primary:#2a9d8f; --accent:#f4a261; --accent-2:#84d2c4;
-          --radius:18px; --ease:cubic-bezier(.22,.61,.36,1);
-        }
-        *{box-sizing:border-box;margin:0;padding:0}
-        body{
-          background:var(--bg);color:var(--ink);
-          font-family:Nunito,system-ui,sans-serif;
-          line-height: 1.6;
-          padding: 20px;
-        }
-        main {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: clamp(20px, 5vw, 40px);
-            background: var(--paper);
-            border-radius: var(--radius);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid rgba(230, 240, 247, 0.8);
-        }
-        h1 {
-            font-family:Fraunces,serif;
-            font-weight:900;
-            font-size:clamp(28px, 4vw, 40px);
-            color: var(--ink);
-            margin-bottom: 1em;
-            line-height: 1.2;
-            text-align: center;
-        }
-        h3 {
-            font-family: Nunito, system-ui, sans-serif;
-            font-weight: 800;
-            font-size: clamp(19px, 2.5vw, 22px);
-            color: var(--primary);
-            margin-top: 2em;
-            margin-bottom: 0.5em;
-            border-bottom: 2px solid var(--accent-2);
-            padding-bottom: 4px;
-        }
-        p {
-            font-size: 17px;
-            color: var(--muted);
-            margin-bottom: 1em;
-        }
-        strong {
-            color: var(--ink);
-            font-weight: 700;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 30px;
-            margin-bottom: 1rem;
-            font-size: 17px;
-            color: var(--muted);
-        }
-        ul li {
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-        }
-        a {
-            color: var(--primary);
-            text-decoration: underline;
-            transition: color 0.2s ease;
-        }
-        a:hover {
-            color: var(--accent);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales & Politique de confidentialité – Estelle Formation IA</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="télécharger.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050508;
+      --surface: #0f1118;
+      --border: rgba(255,255,255,0.06);
+      --text: #e8e8ec;
+      --text-2: #a0a0b4;
+      --text-3: #6a6a80;
+      --accent: #22d3ee;
+      --accent-2: #f97316;
+      --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      padding: 24px;
+      min-height: 100vh;
+    }
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: clamp(28px, 5vw, 48px);
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 2em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 2.5vw, 22px);
+      color: var(--accent);
+      margin-top: 2.5em;
+      margin-bottom: 0.8em;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+    p {
+      font-size: 15px;
+      color: var(--text-2);
+      margin-bottom: 1em;
+      line-height: 1.7;
+    }
+    strong { color: var(--text); font-weight: 600; }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.2rem;
+    }
+    ul li {
+      font-size: 15px;
+      color: var(--text-2);
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    ul li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover { color: var(--accent-2); }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 1px solid var(--border);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .sub-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text);
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+  </style>
 </head>
 <body>
 
 <main>
-    <h1>Mentions légales & Politique de confidentialité</h1>
+  <h1>Mentions légales & Politique de confidentialité</h1>
 
-    <h3>Édition du site</h3>
-    <ul>
-        <li><strong>Nom de l’éditrice :</strong> Estelle Schmitt – Entrepreneure individuelle</li>
-        <li><strong>SIRET :</strong> 99366199000016</li>
-        <li><strong>Code APE :</strong> 85.59A</li>
-        <li>TVA non applicable, art. 293 B du CGI</li>
-        <li><strong>Siège social :</strong> Beblenheim (adresse non ouverte au public)</li>
-        <li><strong>Adresse e-mail :</strong> <a href="mailto:estelle.iaformation@gmail.com">estelle.iaformation@gmail.com</a></li>
-    </ul>
-    <p>Le présent site a pour objet de présenter les activités de formation et d’accompagnement à l’apprentissage de l’intelligence artificielle, destinées aux particuliers souhaitant découvrir et utiliser ces outils simplement.</p>
+  <h3>Édition du site</h3>
+  <ul>
+    <li><strong>Nom de l'éditrice :</strong> Estelle Schmitt – Entrepreneure individuelle</li>
+    <li><strong>SIRET :</strong> 99366199000016</li>
+    <li><strong>Code APE :</strong> 85.59A</li>
+    <li>TVA non applicable, art. 293 B du CGI</li>
+    <li><strong>Siège social :</strong> Beblenheim (adresse non ouverte au public)</li>
+    <li><strong>Adresse e-mail :</strong> <a href="mailto:estelle.iaformation@gmail.com">estelle.iaformation@gmail.com</a></li>
+  </ul>
+  <p>Le présent site a pour objet de présenter les activités de formation et d'accompagnement à l'apprentissage de l'intelligence artificielle, destinées aux particuliers souhaitant découvrir et utiliser ces outils simplement.</p>
 
-    <h3>Hébergement</h3>
-    <ul>
-        <li><strong>Hébergeur :</strong> GitHub, Inc.</li>
-        <li><strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</li>
-        <li><strong>Site web :</strong> <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
-    </ul>
+  <h3>Hébergement</h3>
+  <ul>
+    <li><strong>Hébergeur :</strong> GitHub, Inc.</li>
+    <li><strong>Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</li>
+    <li><strong>Site web :</strong> <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
+  </ul>
 
-    <h3>Propriété intellectuelle</h3>
-    <p>L’ensemble du contenu de ce site — notamment les textes, images, logos et éléments graphiques — a été conçu et édité par Estelle Schmitt, y compris certains contenus créés à l’aide d’outils d’intelligence artificielle.</p>
-    <p>Toute reproduction, représentation ou diffusion sans autorisation préalable est interdite.</p>
-    <p>© 2026 Estelle Schmitt – Tous droits réservés.</p>
+  <h3>Propriété intellectuelle</h3>
+  <p>L'ensemble du contenu de ce site — notamment les textes, images, logos et éléments graphiques — a été conçu et édité par Estelle Schmitt, y compris certains contenus créés à l'aide d'outils d'intelligence artificielle.</p>
+  <p>Toute reproduction, représentation ou diffusion sans autorisation préalable est interdite.</p>
+  <p>&copy; 2026 Estelle Schmitt – Tous droits réservés.</p>
 
-    <h3>Responsabilité</h3>
-    <p>L’éditrice du site s’efforce de fournir des informations exactes et à jour.</p>
-    <p>Cependant, elle ne saurait être tenue responsable d’erreurs, d’omissions ou de dysfonctionnements temporaires du site.</p>
+  <h3>Responsabilité</h3>
+  <p>L'éditrice du site s'efforce de fournir des informations exactes et à jour.</p>
+  <p>Cependant, elle ne saurait être tenue responsable d'erreurs, d'omissions ou de dysfonctionnements temporaires du site.</p>
 
-    <h3>Médiation de la consommation</h3>
-    <p>Conformément aux articles L.612-1 et suivants du Code de la consommation, tout consommateur a le droit de recourir gratuitement à un médiateur de la consommation en cas de litige non résolu à l’amiable.</p>
-    <p><strong>Médiateur compétent :</strong>CM2C
-49 rue de Ponthieu
-75 008 PARIS
-Tel : 01 89 47 00 14
-Site internet : https://www.cm2c.net/declarer-un-litige.php
-Mail : litiges@cm2c.net</p>
+  <h3>Médiation de la consommation</h3>
+  <p>Conformément aux articles L.612-1 et suivants du Code de la consommation, tout consommateur a le droit de recourir gratuitement à un médiateur de la consommation en cas de litige non résolu à l'amiable.</p>
+  <p><strong>Médiateur compétent : CM2C</strong><br>49 rue de Ponthieu<br>75 008 PARIS<br>Tel : 01 89 47 00 14<br>Site : <a href="https://www.cm2c.net/declarer-un-litige.php" target="_blank" rel="noopener">cm2c.net</a><br>Mail : <a href="mailto:litiges@cm2c.net">litiges@cm2c.net</a></p>
 
-    <h3>Protection des données personnelles (RGPD)</h3>
-    <p>Les informations recueillies via le formulaire de contact (nom, prénom, adresse e-mail et téléphone) sont enregistrées afin de permettre à Estelle Schmitt de répondre aux demandes reçues et, le cas échéant, d’informer les personnes intéressées de ses activités, notamment de ses formations à l’intelligence artificielle (Estelle Formation IA) et de ses prestations de services à la personne (Estelle & Vous).</p>
-    <p>Ces données ne sont jamais transmises à des tiers et sont conservées pour une durée maximale de <strong>36 mois</strong> à compter du dernier contact, sauf demande de suppression avant ce délai.</p>
+  <h3>Protection des données personnelles (RGPD)</h3>
+  <p>Les informations recueillies via le formulaire de contact (nom, prénom, adresse e-mail et téléphone) sont enregistrées afin de permettre à Estelle Schmitt de répondre aux demandes reçues et, le cas échéant, d'informer les personnes intéressées de ses activités, notamment de ses formations à l'intelligence artificielle (Estelle Formation IA) et de ses prestations de services à la personne (Estelle & Vous).</p>
+  <p>Ces données ne sont jamais transmises à des tiers et sont conservées pour une durée maximale de <strong>36 mois</strong> à compter du dernier contact, sauf demande de suppression avant ce délai.</p>
 
-    <p style="font-weight: 700; color: var(--ink); margin-top: 1.5em;">Vos droits</p>
-    <p>Conformément au Règlement Général sur la Protection des Données (RGPD UE 2016/679), vous disposez d’un droit d’accès, de rectification, de suppression et d’opposition concernant vos données personnelles.</p>
-    <p>Pour exercer ces droits, il vous suffit d’envoyer un e-mail à : <a href="mailto:estelle.iaformation@gmail.com">estelle.iaformation@gmail.com</a></p>
+  <p class="sub-heading">Vos droits</p>
+  <p>Conformément au Règlement Général sur la Protection des Données (RGPD UE 2016/679), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles.</p>
+  <p>Pour exercer ces droits, il vous suffit d'envoyer un e-mail à : <a href="mailto:estelle.iaformation@gmail.com">estelle.iaformation@gmail.com</a></p>
 
-    <!-- MODIFICATION: Le 'p' devient 'h3' et reçoit un 'id' -->
-    <h3 id="cookies">Cookies et statistiques</h3>
-    <p>Ce site peut utiliser des <strong>cookies techniques</strong> nécessaires à son bon fonctionnement (par exemple pour la sécurité ou la gestion de session).</p>
-    <p>Si des cookies de mesure d’audience (Google Analytics ou équivalent) sont activés, ils servent uniquement à analyser la fréquentation du site de manière anonyme.</p>
-    <p>Lors de votre première visite, un bandeau d’information peut apparaître pour vous permettre d’accepter ou de refuser les cookies non essentiels.</p>
-    <!-- MODIFICATION: Ajout de la mention pour gérer les cookies -->
-    <p>Vous pouvez à tout moment modifier vos préférences de cookies en cliquant sur le lien <strong>"Gérer les cookies"</strong> présent dans le pied de page du site.</p>
+  <h3 id="cookies">Cookies et statistiques</h3>
+  <p>Ce site peut utiliser des <strong>cookies techniques</strong> nécessaires à son bon fonctionnement (par exemple pour la sécurité ou la gestion de session).</p>
+  <p>Si des cookies de mesure d'audience (Google Analytics ou équivalent) sont activés, ils servent uniquement à analyser la fréquentation du site de manière anonyme.</p>
+  <p>Lors de votre première visite, un bandeau d'information peut apparaître pour vous permettre d'accepter ou de refuser les cookies non essentiels.</p>
+  <p>Vous pouvez à tout moment modifier vos préférences de cookies en cliquant sur le lien <strong>"Gérer les cookies"</strong> présent dans le pied de page du site.</p>
 
-    <h3>Contact</h3>
-    <p>Pour toute question relative au site, à son contenu ou à vos données personnelles, vous pouvez écrire à : <a href="mailto:estelle.iaformation@gmail.com">estelle.iaformation@gmail.com</a></p>
+  <h3>Contact</h3>
+  <p>Pour toute question relative au site, à son contenu ou à vos données personnelles, vous pouvez écrire à : <a href="mailto:estelle.iaformation@gmail.com">estelle.iaformation@gmail.com</a></p>
 
-
-    <div style="text-align: center; margin-top: 40px; border-top: 1px solid #e6f0f7; padding-top: 20px;">
-        <a href="index.html" style="font-weight: 700; text-decoration: none;">← Retourner au site</a>
-    </div>
-
+  <a href="index.html" class="back-link">&larr; Retourner au site</a>
 </main>
 
 </body>
-
 </html>
-
