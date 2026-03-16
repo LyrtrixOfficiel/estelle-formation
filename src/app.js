@@ -523,118 +523,83 @@
   }
 
 
-  // ─── THREE.JS SCENE ────────────────────────
-  let scene3d, camera, renderer3d, particles, mouseX = 0, mouseY = 0;
+  // ─── AMBIENT BACKGROUND (Gradient Mesh) ────
+  let sceneCanvas, sceneCtx, sceneMouse = { x: 0.5, y: 0.5 };
+  const orbs = [];
 
   function initScene() {
-    const canvas = document.getElementById('scene');
-    if (!canvas || typeof THREE === 'undefined') return;
+    sceneCanvas = document.getElementById('scene');
+    if (!sceneCanvas) return;
+    sceneCtx = sceneCanvas.getContext('2d');
 
-    scene3d = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 50;
-
-    renderer3d = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer3d.setSize(window.innerWidth, window.innerHeight);
-    renderer3d.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    // Particles
-    const count = 1200;
-    const geo = new THREE.BufferGeometry();
-    const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
-
-    const accent1 = new THREE.Color(0x22d3ee);
-    const accent2 = new THREE.Color(0xf97316);
-
-    for (let i = 0; i < count; i++) {
-      const i3 = i * 3;
-      positions[i3] = (Math.random() - 0.5) * 120;
-      positions[i3 + 1] = (Math.random() - 0.5) * 120;
-      positions[i3 + 2] = (Math.random() - 0.5) * 80;
-
-      const t = Math.random();
-      const c = accent1.clone().lerp(accent2, t);
-      colors[i3] = c.r;
-      colors[i3 + 1] = c.g;
-      colors[i3 + 2] = c.b;
-
-      sizes[i] = Math.random() * 2 + 0.5;
+    function resize() {
+      sceneCanvas.width = window.innerWidth;
+      sceneCanvas.height = window.innerHeight;
     }
+    resize();
+    window.addEventListener('resize', resize);
 
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    geo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
-
-    const mat = new THREE.PointsMaterial({
-      size: 1.5,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.6,
-      sizeAttenuation: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-
-    particles = new THREE.Points(geo, mat);
-    scene3d.add(particles);
-
-    // Lines between nearby particles
-    const lineGeo = new THREE.BufferGeometry();
-    const linePositions = [];
-    const pos = geo.attributes.position.array;
-    for (let i = 0; i < count; i++) {
-      for (let j = i + 1; j < count; j++) {
-        const dx = pos[i * 3] - pos[j * 3];
-        const dy = pos[i * 3 + 1] - pos[j * 3 + 1];
-        const dz = pos[i * 3 + 2] - pos[j * 3 + 2];
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        if (dist < 8) {
-          linePositions.push(pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2]);
-          linePositions.push(pos[j * 3], pos[j * 3 + 1], pos[j * 3 + 2]);
-        }
-      }
-    }
-    lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-    const lineMat = new THREE.LineBasicMaterial({
-      color: 0x22d3ee,
-      transparent: true,
-      opacity: 0.06,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-    const lines = new THREE.LineSegments(lineGeo, lineMat);
-    scene3d.add(lines);
-
-    // Mouse tracking
     document.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      sceneMouse.x = e.clientX / window.innerWidth;
+      sceneMouse.y = e.clientY / window.innerHeight;
     });
 
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer3d.setSize(window.innerWidth, window.innerHeight);
-    });
+    // Create soft gradient orbs
+    const colors = [
+      { r: 34, g: 211, b: 238 },   // cyan
+      { r: 249, g: 115, b: 22 },    // orange
+      { r: 99, g: 102, b: 241 },    // indigo
+      { r: 34, g: 211, b: 238 },    // cyan
+      { r: 168, g: 85, b: 247 },    // purple
+    ];
+
+    for (let i = 0; i < 5; i++) {
+      orbs.push({
+        x: Math.random(),
+        y: Math.random(),
+        baseX: Math.random(),
+        baseY: Math.random(),
+        radius: 0.25 + Math.random() * 0.2,
+        color: colors[i],
+        speedX: 0.0002 + Math.random() * 0.0003,
+        speedY: 0.0001 + Math.random() * 0.0002,
+        phaseX: Math.random() * Math.PI * 2,
+        phaseY: Math.random() * Math.PI * 2,
+      });
+    }
   }
 
   function animateScene(time) {
-    if (!particles || !renderer3d) return;
+    if (!sceneCtx || !sceneCanvas) return;
+    const W = sceneCanvas.width, H = sceneCanvas.height;
+    const t = time * 0.001;
 
-    const t = time * 0.0001;
-    particles.rotation.y = t * 0.3 + mouseX * 0.05;
-    particles.rotation.x = t * 0.15 + mouseY * 0.05;
+    // Clear with dark bg
+    sceneCtx.fillStyle = '#050508';
+    sceneCtx.fillRect(0, 0, W, H);
 
-    // Subtle position drift
-    const pos = particles.geometry.attributes.position.array;
-    for (let i = 0; i < pos.length; i += 3) {
-      pos[i + 1] += Math.sin(t * 2 + pos[i] * 0.1) * 0.005;
+    // Draw each orb as a large radial gradient
+    sceneCtx.globalCompositeOperation = 'lighter';
+    for (const orb of orbs) {
+      // Slow organic movement
+      const mx = (sceneMouse.x - 0.5) * 0.06;
+      const my = (sceneMouse.y - 0.5) * 0.06;
+      orb.x = orb.baseX + Math.sin(t * orb.speedX * 6 + orb.phaseX) * 0.2 + mx;
+      orb.y = orb.baseY + Math.cos(t * orb.speedY * 6 + orb.phaseY) * 0.15 + my;
+
+      const cx = orb.x * W, cy = orb.y * H;
+      const r = orb.radius * Math.max(W, H);
+      const { r: cr, g: cg, b: cb } = orb.color;
+
+      const grad = sceneCtx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      grad.addColorStop(0, `rgba(${cr},${cg},${cb},0.06)`);
+      grad.addColorStop(0.4, `rgba(${cr},${cg},${cb},0.03)`);
+      grad.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+
+      sceneCtx.fillStyle = grad;
+      sceneCtx.fillRect(0, 0, W, H);
     }
-    particles.geometry.attributes.position.needsUpdate = true;
-
-    renderer3d.render(scene3d, camera);
+    sceneCtx.globalCompositeOperation = 'source-over';
   }
 
 
@@ -741,7 +706,15 @@
         blinking: false, blinkUntil: 0, nextBlinkAt: 2 + Math.random() * 3, winkSide: 'both',
         waving: false, waveUntil: 0, nextWaveAt: 6 + Math.random() * 6,
         hurt: false, hurtUntil: 0,
-        tilt: 0
+        tilt: 0,
+        // New animation state
+        bobPhase: Math.random() * Math.PI * 2,
+        bobSpeed: 0.0015 + Math.random() * 0.001,
+        breathPhase: Math.random() * Math.PI * 2,
+        breathSpeed: 0.002 + Math.random() * 0.0008,
+        squash: 1,
+        squashTarget: 1,
+        glowPulse: Math.random() * Math.PI * 2,
       });
     }
 
@@ -763,10 +736,13 @@
       for (let i = robots.length - 1; i >= 0; i--) {
         const b = robots[i];
         const dx = b.x - mouse.x, dy = b.y - mouse.y;
-        if (dx * dx + dy * dy <= (b.r * 1.2) * (b.r * 1.2)) {
+        // Larger hit area (1.6x radius) for easier grabbing
+        if (dx * dx + dy * dy <= (b.r * 1.6) * (b.r * 1.6)) {
           __botfx_grabbed = i;
           robotCanvas.classList.add('grabbing');
           robotCanvas.style.touchAction = 'none';
+          // Squash effect on grab
+          b.squash = 0.85;
           break;
         }
       }
@@ -785,6 +761,14 @@
     }, { passive: false });
 
     function endPress() {
+      // Fling effect — apply mouse velocity to the released robot
+      if (__botfx_grabbed !== -1 && __botfx_grabbed < robots.length) {
+        const b = robots[__botfx_grabbed];
+        b.vx += mouse.vx * 0.5;
+        b.vy += mouse.vy * 0.5;
+        // Stretch on release
+        b.squash = 1.2;
+      }
       mouse.active = false; mouse.id = null; __botfx_grabbed = -1;
       robotCanvas.classList.remove('grabbing');
       robotCanvas.style.cursor = 'grab';
@@ -845,6 +829,21 @@
 
         const targetTilt = (a.vx / DPR) * 0.05;
         a.tilt += (targetTilt - a.tilt) * 0.1;
+
+        // Bobbing (floating effect)
+        const nowMs = performance.now();
+        a.bobOffset = Math.sin(nowMs * a.bobSpeed + a.bobPhase) * 3 * DPR;
+
+        // Breathing scale
+        a.breathScale = 1 + Math.sin(nowMs * a.breathSpeed + a.breathPhase) * 0.02;
+
+        // Squash & stretch on velocity
+        const speed = Math.hypot(a.vx, a.vy);
+        a.squashTarget = speed > 3 ? 1 + Math.min(speed * 0.008, 0.12) : 1;
+        a.squash += (a.squashTarget - a.squash) * 0.1;
+
+        // Glow pulse
+        a.glowPulse += 0.003;
       }
 
       // Collisions
@@ -886,16 +885,27 @@
       for (const b of robots) {
         const ctx = robotCtx;
         ctx.save();
-        ctx.translate(b.x, b.y);
+        const drawY = b.y + (b.bobOffset || 0);
+        const breath = b.breathScale || 1;
+        const sq = b.squash || 1;
+        const scaleX = breath * (1 / Math.sqrt(sq));
+        const scaleY = breath * Math.sqrt(sq);
+        ctx.translate(b.x, drawY);
         ctx.rotate(b.tilt);
-        ctx.translate(-b.x, -b.y);
+        ctx.scale(scaleX, scaleY);
+        ctx.translate(-b.x, -drawY);
 
         const w = b.r * 1.8, h = b.r * 1.6;
-        const rx = b.x - w / 2, ry = b.y - h / 2;
+        const rx = b.x - w / 2, ry = drawY - h / 2;
 
-        // Body with glow
-        ctx.shadowBlur = 26 * DPR;
-        ctx.shadowColor = b.tint === 'teal' ? 'rgba(42,157,143,0.65)' : 'rgba(244,162,97,0.65)';
+        // Pulsating glow behind robot
+        const glowAlpha = 0.5 + Math.sin(b.glowPulse) * 0.15;
+        ctx.shadowBlur = 30 * DPR;
+        ctx.shadowColor = b.tint === 'teal'
+          ? `rgba(42,157,143,${glowAlpha})`
+          : `rgba(244,162,97,${glowAlpha})`;
+
+        // Body
         ctx.fillStyle = b.tint === 'teal' ? 'rgba(42,157,143,0.98)' : 'rgba(244,162,97,0.98)';
         rr(ctx, rx, ry, w, h, 12 * DPR);
         ctx.fill();
@@ -908,13 +918,13 @@
 
         // White face plate
         const fpw = w * 0.78, fph = h * 0.48;
-        const fpx = b.x - fpw / 2, fpy = b.y - fph * 0.15;
+        const fpx = b.x - fpw / 2, fpy = drawY - fph * 0.15;
         ctx.fillStyle = 'rgba(255,255,255,0.85)';
         rr(ctx, fpx, fpy, fpw, fph, 10 * DPR);
         ctx.fill();
 
         // Eyes
-        const es = b.r * 0.22, ey = b.y;
+        const es = b.r * 0.22, ey = drawY;
         if (b.hurt) {
           // X eyes + frown
           ctx.strokeStyle = 'rgba(14,27,42,0.95)';
@@ -927,7 +937,7 @@
           ctx.lineTo(fpx + fpw * 0.75 - es, ey + es);
           ctx.stroke();
           ctx.beginPath();
-          ctx.arc(b.x, b.y + es * 1.1, es * 0.9, 0.85 * Math.PI, 0.15 * Math.PI, true);
+          ctx.arc(b.x, drawY + es * 1.1, es * 0.9, 0.85 * Math.PI, 0.15 * Math.PI, true);
           ctx.stroke();
         } else {
           // Normal dark rounded square eyes
@@ -942,20 +952,20 @@
           ctx.strokeStyle = 'rgba(14,27,42,0.8)';
           ctx.lineWidth = 2 * DPR;
           ctx.beginPath();
-          ctx.arc(b.x, b.y + es * 0.9, es * 0.9, 0.15 * Math.PI, 0.85 * Math.PI);
+          ctx.arc(b.x, drawY + es * 0.9, es * 0.9, 0.15 * Math.PI, 0.85 * Math.PI);
           ctx.stroke();
         }
 
         // White arms
         ctx.fillStyle = 'rgba(255,255,255,0.9)';
-        let leftArmY = b.y - h * 0.05, rightArmY = b.y - h * 0.05;
+        let leftArmY = drawY - h * 0.05, rightArmY = drawY - h * 0.05;
         if (b.waving) rightArmY -= h * 0.25;
         rr(ctx, b.x - w * 0.45, leftArmY, w * 0.18, h * 0.12, 6 * DPR); ctx.fill();
         rr(ctx, b.x + w * 0.27, rightArmY, w * 0.18, h * 0.12, 6 * DPR); ctx.fill();
 
         // White legs
-        rr(ctx, b.x - w * 0.22, b.y + h * 0.45, w * 0.18, h * 0.18, 6 * DPR); ctx.fill();
-        rr(ctx, b.x + w * 0.04, b.y + h * 0.45, w * 0.18, h * 0.18, 6 * DPR); ctx.fill();
+        rr(ctx, b.x - w * 0.22, drawY + h * 0.45, w * 0.18, h * 0.18, 6 * DPR); ctx.fill();
+        rr(ctx, b.x + w * 0.04, drawY + h * 0.45, w * 0.18, h * 0.18, 6 * DPR); ctx.fill();
 
         // Two white antennae with circle tips
         ctx.strokeStyle = 'rgba(255,255,255,0.9)';
